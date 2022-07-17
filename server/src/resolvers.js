@@ -1,14 +1,12 @@
 const resolvers = {
     Query:{
-        listPhotos: (_, __, {dataSources}) =>{
-            return dataSources.photosAPI.getPhotos();
+        homePhotos: (_, __, {dataSources}) =>{
+            return dataSources.photosAPI.getHomePhotos();
+        },
+        detailedPhoto: (_, {id}, {dataSources}) =>{
+            return dataSources.photosAPI.getPhotoDetails(id);
         }
     }
-    // Query: {
-    //     tracksForHome: (_, __, { dataSources }) => {
-    //         return dataSources.photosAPI.getPhotos();
-    //     },
-    // },
 }
 
 module.exports = resolvers;

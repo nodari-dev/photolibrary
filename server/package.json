@@ -7,6 +7,8 @@
     "start": "nodemon src/index"
   },
   "dependencies": {
+    "@graphql-tools/graphql-file-loader": "^7.4.0",
+    "@graphql-tools/load": "^7.7.0",
     "@graphql-tools/load-files": "^6.6.0",
     "@graphql-tools/merge": "^8.3.0",
     "apollo-datasource-rest": "^3.6.1",

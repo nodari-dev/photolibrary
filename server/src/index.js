@@ -1,8 +1,9 @@
-const { ApolloServer } = require('apollo-server');
-const typeDefs = require('./schema');
+const { ApolloServer} = require('apollo-server');
 const resolvers = require('./resolvers');
 
 const PhotosAPI = require('./datasources/photos-api');
+
+const typeDefs = require('./graphql/schema');
 
 const server = new ApolloServer({
     typeDefs,
@@ -21,3 +22,5 @@ server.listen().then(() =>{
     📭  Query at http://localhost:4000
   `);
 });
+
+

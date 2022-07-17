@@ -3,27 +3,23 @@ import {gql, useQuery} from "@apollo/client";
 
 
 const test = gql`
-    query ListPhotos {
-        listPhotos {
+    query HomePhotos {
+        homePhotos {
             id
             color
-            likes
             urls {
-                full
-                raw
                 regular
             }
-            created_at
-            links {
-                html
-            }
             user {
-                links {
-                    html
-                }
                 id
                 first_name
                 last_name
+                links {
+                    html
+                }
+            }
+            links {
+                html
             }
         }
     }
@@ -49,7 +45,7 @@ function App() {
     });
     if (loading) return <h2>Loading...</h2>
     console.log(data);
-    return <img src={data.listPhotos[0].urls.regular} alt=""/>
+    return <img src={data.homePhotos[0].urls.regular} alt=""/>
 }
 
 export default App;

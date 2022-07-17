@@ -7,8 +7,12 @@ class PhotosApi extends RESTDataSource{
         this.baseURL = `https://api.unsplash.com/`
     }
 
-    getPhotos(){
-        return this.get(`photos/?client_id=${config.API_KEY}`)
+    getHomePhotos(){
+        return this.get(`photos/random?count=20&client_id=${config.API_KEY}`)
+    }
+
+    getPhotoDetails(photoId){
+        return this.get(`photos/${photoId}/?client_id=${config.API_KEY}`)
     }
 }
 
