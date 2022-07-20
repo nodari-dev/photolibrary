@@ -3,8 +3,9 @@ const {gql} = require('apollo-server');
 const typeDefs = gql`
     type Query{
         #first 10 photos
-        homePhotos: [HomePhoto!]!
-        photo(id: ID!): DetailedPhoto!
+        homePhotos: [PhotoCard!]!
+        searchPhotos(query: String!): [PhotoCard]!
+        photo(id: ID!): PhotoDetails!
     }
     
     type LinkToHTML{
@@ -21,14 +22,14 @@ const typeDefs = gql`
         user: Author!
     }
 
-    type HomePhoto implements DefaultPhoto{
+    type PhotoCard implements DefaultPhoto{
         id: ID!
         color: String!
         urls: RegularPhotoUrl!
         user: Author!
     }
     
-    type DetailedPhoto implements DefaultPhoto{
+    type PhotoDetails implements DefaultPhoto{
         id: ID!
         color: String!
         urls: RegularPhotoUrl!
