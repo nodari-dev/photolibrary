@@ -11,8 +11,6 @@ export default function useSearch () {
             ...params,
             [type]: value
         });
-
-        console.log(params);
     }
     const separateValues = (value) =>{
         return value.replace(" ", ",");
