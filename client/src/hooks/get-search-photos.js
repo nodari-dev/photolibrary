@@ -1,8 +1,10 @@
 import {gql} from "@apollo/client";
 
 export const GET_SEARCH_PHOTOS = gql`
-    query SearchPhotos($query: String!) {
-        searchPhotos(query: $query) {
+    query SearchPhotos($searchInput: SearchQueries!) {
+        searchPhotos(searchInput: $searchInput) {
+            total
+            total_pages
             results {
                 id
                 color
@@ -12,10 +14,10 @@ export const GET_SEARCH_PHOTOS = gql`
                 user {
                     id
                     first_name
+                    last_name
                     links {
                         html
                     }
-                    last_name
                 }
             }
         }

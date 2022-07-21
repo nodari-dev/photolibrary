@@ -1,18 +1,16 @@
 const {gql} = require('apollo-server');
 
 const typeDefs = gql`
+
     type Query{
-        #first 10 photos
+        #first 20 photos
         homePhotos: [PhotoCard!]!
-        searchPhotos(query: String!): SearchPhotos!
+        #seach for photos by keywords
+        searchPhotos(searchInput: SearchQueries!): SearchPhotos!
+        #single photo information
         photo(id: ID!): PhotoDetails!
     }
     
-    type LinkToHTML{
-        #get link to real html page (original url)
-        html: String!
-    }
-
     interface DefaultPhoto{
         id: ID!
         #color for design
@@ -22,6 +20,12 @@ const typeDefs = gql`
         user: Author!
     }
 
+    
+    type LinkToHTML{
+        #get link to real html page (original url)
+        html: String!
+    }
+    
     type PhotoCard implements DefaultPhoto{
         id: ID!
         color: String!
@@ -63,6 +67,10 @@ const typeDefs = gql`
     
     type Search{
         query: String
+    }
+    
+    input SearchQueries{
+        queries: String!
     }
 `;
 

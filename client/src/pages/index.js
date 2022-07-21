@@ -10,7 +10,7 @@ export default function Index(){
         <Router primary={false} component={Fragment}>
             <Home path="/" />
             <Photo path="/photos/:photoId" />
-            <Search path="/search/photos/" />
+            <Search path="/search/" />
         </Router>
     )
 }

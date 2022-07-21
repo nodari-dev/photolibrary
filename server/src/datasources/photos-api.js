@@ -10,8 +10,8 @@ class PhotosApi extends RESTDataSource{
     getHomePhotos(){
         return this.get(`photos/random?count=20&client_id=${config.API_KEY}`);
     }
-    getSearchPhoto(searchQuery){
-        return this.get(`search/photos?query=${searchQuery}&client_id=${config.API_KEY}`);
+    getSearchPhoto(searchQueries){
+        return this.get(`search/photos/?query=${searchQueries}&client_id=${config.API_KEY}`);
     }
     getPhotoDetails(photoId){
         return this.get(`photos/${photoId}/?client_id=${config.API_KEY}`);
