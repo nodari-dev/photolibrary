@@ -4,7 +4,7 @@ const typeDefs = gql`
     type Query{
         #first 10 photos
         homePhotos: [PhotoCard!]!
-        searchPhotos(query: String!): [PhotoCard]!
+        searchPhotos(query: String!): SearchPhotos!
         photo(id: ID!): PhotoDetails!
     }
     
@@ -45,6 +45,12 @@ const typeDefs = gql`
     
     type RegularPhotoUrl{
         regular: String
+    }
+    
+    type SearchPhotos{
+        total: Int!
+        total_pages: Int!
+        results: [PhotoCard!]!
     }
 
     type Author{

@@ -3,8 +3,8 @@ const resolvers= {
         homePhotos: (_, __, {dataSources}) =>{
             return dataSources.photosAPI.getHomePhotos();
         },
-        searchPhotos: (_, __, {dataSources}) =>{
-            return dataSources.photosAPI.getHomePhotos();
+        searchPhotos: (_, {query}, {dataSources}) =>{
+            return dataSources.photosAPI.getSearchPhoto(query);
         },
         photo: (_, {id}, {dataSources}) =>{
             return dataSources.photosAPI.getPhotoDetails(id);
