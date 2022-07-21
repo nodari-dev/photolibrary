@@ -6,7 +6,7 @@ const typeDefs = gql`
         #first 20 photos
         homePhotos: [PhotoCard!]!
         #seach for photos by keywords
-        searchPhotos(searchInput: SearchQueries!): SearchPhotos!
+        searchPhotos(searchParams: SearchParams!): SearchPhotos!
         #single photo information
         photo(id: ID!): PhotoDetails!
     }
@@ -65,12 +65,9 @@ const typeDefs = gql`
         links: LinkToHTML!
     }
     
-    type Search{
-        query: String
-    }
-    
-    input SearchQueries{
-        queries: String!
+    input SearchParams{
+        keywords: String!
+        page: Int!
     }
 `;
 

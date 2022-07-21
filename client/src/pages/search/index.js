@@ -4,30 +4,29 @@ import useSearch from "../../hooks/use-search";
 
 export default function Search() {
     const {loading, error, data, refetch} = useQuery(GET_SEARCH_PHOTOS);
-    const { operations, queriesString } = useSearch();
+    const { operations, params } = useSearch();
 
 
-    if (loading) return <h2>Loading</h2>
-
+    if (loading) return <h2>Loading</h2>;
     return(
         <div>
-            <input type="string" onChange={(e) =>{
-                operations.updateQueriesArr(
-                    operations.separateValues(e.target.value)
-                );
-                console.log(queriesString)
+            <input type="text" onChange={(e) =>{
+                operations.updateParams("keywords", operations.separateValues(e.target.value))
+            }}/>
+            <input type="number" min={1} onChange={(e) => {
+                operations.updateParams("page", parseInt(e.target.value))
             }}/>
 
             <button onClick={() =>{
                 refetch({
-                    searchInput:{
-                        queries: queriesString
+                    searchParams:{
+                        keywords: params.keywords,
+                        page: params.page,
                     }
                 })
             }}>
                 Search
             </button>
-
             {data?.searchPhotos?.results.map((item, index) =>(
                 <div key={index}><h2>{item.color}</h2></div>
             ))}

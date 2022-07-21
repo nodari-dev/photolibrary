@@ -1,18 +1,25 @@
 import {useState} from "react";
 
 export default function useSearch () {
-    const [queriesString, _updateQueriesString] = useState(undefined);
+    const [params, _updateParams] = useState({
+        keywords: undefined,
+        page: 1
+    });
 
-    const updateQueriesArr = (value) =>{
-        _updateQueriesString(value);
+    const updateParams = (type, value) =>{
+        _updateParams({
+            ...params,
+            [type]: value
+        });
+
+        console.log(params);
     }
-
     const separateValues = (value) =>{
         return value.replace(" ", ",");
     }
 
     return{
-        queriesString: queriesString,
-        operations: {updateQueriesArr, separateValues}
+        params: params,
+        operations: {updateParams, separateValues}
     }
 }

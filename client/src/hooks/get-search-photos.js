@@ -1,8 +1,8 @@
 import {gql} from "@apollo/client";
 
 export const GET_SEARCH_PHOTOS = gql`
-    query SearchPhotos($searchInput: SearchQueries!) {
-        searchPhotos(searchInput: $searchInput) {
+    query SearchPhotos($searchParams: SearchParams!) {
+        searchPhotos(searchParams: $searchParams) {
             total
             total_pages
             results {
