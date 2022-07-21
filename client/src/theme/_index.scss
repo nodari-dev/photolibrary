@@ -1,0 +1,16 @@
+@import "variables";
+@import "reset";
+@import "layout.scss";
+
+body{
+  font-family: $primary-font;
+  background-color: $secondary-color;
+  color: $primary-color;
+}
+
+.primary-link{
+    &.active{
+      text-decoration: underline;
+    }
+
+}

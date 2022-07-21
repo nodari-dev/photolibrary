@@ -16,9 +16,6 @@ export default function Search() {
                 operations.updateParams("page", parseInt(e.target.value))
             }}/>
 
-            {/*{[...Array(data?.searchPhotos.total_pages)].map((e, i) =>{*/}
-            {/*    return <p key={i + 1}>{i + 1}</p>*/}
-            {/*})}*/}
 
             <button onClick={() =>{
                 refetch({
@@ -35,9 +32,6 @@ export default function Search() {
 
             <p>Total pages {data?.searchPhotos.total_pages}</p>
             <p>Current page {params.page}</p>
-            {/*{data?.searchPhotos?.total_pages.map((item, index) =>(*/}
-            {/*    <div key={index}><h2>{item}</h2></div>*/}
-            {/*))}*/}
 
             {data?.searchPhotos?.results.map((item, index) =>(
                 <div key={index}><h2>{item.color}</h2></div>
