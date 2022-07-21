@@ -10,8 +10,8 @@ export default function Header(){
                     <NavLink className={"primary-link"} activeClassName={"active"} to={"/"}>Index</NavLink>
                     <NavLink className={"primary-link"} to={"/search/"}>Search</NavLink>
                 </div>
-                <Link to={"/"}><h2 className={"logo"}>PhotoLibrary</h2></Link>
-                <a href="https://github.com/nodari-dev/photolibrary" target={"_blank"}>GitHub</a>
+                <Link to={"/"}><h2 className={"logo"}>PhotosLibrary</h2></Link>
+                <a className={"primary-link"} href="https://github.com/nodari-dev/photolibrary" target={"_blank"}>GitHub</a>
             </nav>
         </header>
     )

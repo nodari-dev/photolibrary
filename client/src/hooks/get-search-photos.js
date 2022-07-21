@@ -8,6 +8,7 @@ export const GET_SEARCH_PHOTOS = gql`
             results {
                 id
                 color
+                created_at
                 urls {
                     regular
                 }

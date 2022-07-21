@@ -18,6 +18,7 @@ const typeDefs = gql`
         #get specific sizes of photo
         urls: RegularPhotoUrl!
         user: Author!
+        created_at: String!
     }
 
     
@@ -31,6 +32,7 @@ const typeDefs = gql`
         color: String!
         urls: RegularPhotoUrl!
         user: Author!
+        created_at: String!
     }
     
     type PhotoDetails implements DefaultPhoto{
@@ -38,7 +40,7 @@ const typeDefs = gql`
         color: String!
         urls: RegularPhotoUrl!
         user: Author!
-        created_at: String
+        created_at: String!
         #count of likes
         likes: Int
         #get link to original page

@@ -9,6 +9,7 @@ body{
 }
 
 .primary-link{
+  color: $primary-color;
     &.active{
       text-decoration: underline;
     }

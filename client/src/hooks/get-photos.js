@@ -5,6 +5,7 @@ export const GET_PHOTOS = gql`
         homePhotos {
             id
             color
+            created_at
             urls {
                 regular
             }

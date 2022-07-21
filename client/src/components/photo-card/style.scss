@@ -1,0 +1,21 @@
+.photo-card{
+  &-content{
+    display: flex;
+    border: 1px solid red;
+
+    & .image-container{
+      width: 700px;
+      max-height: 600px;
+      height: auto;
+      position: relative;
+
+      & img{
+        width: 100%;
+      }
+    }
+
+    & .photo-author{
+      transform: rotate(90deg);
+    }
+  }
+}
