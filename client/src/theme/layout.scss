@@ -2,5 +2,43 @@
 
 .main{
   width: 100%;
-  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  & > .container.gallery-layout{
+    width: 100%;
+  }
+
+  & > .container.default-layout{
+    width: 100%;
+    padding: $default-space $default-padding;
+  }
+}
+
+header.header{
+  width: 100%;
+
+  & .navigation{
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .logo{
+      font-family: $secondary-font;
+      color: $secondary-color;
+    }
+  }
+}
+
+footer.footer{
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

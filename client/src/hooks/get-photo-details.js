@@ -4,7 +4,6 @@ export const GET_PHOTO_DETAILS = gql`
     query Photo($photoId: ID!) {
         photo(id: $photoId) {
             id
-            color
             urls {
                 regular
             }
@@ -12,9 +11,6 @@ export const GET_PHOTO_DETAILS = gql`
                 id
                 first_name
                 last_name
-                links {
-                    html
-                }
             }
             created_at
             likes

@@ -4,6 +4,13 @@
 * Fonts
 */
 
+$font-sizes: 60px, 48px, 36px, 30px, 24px, 18px;
+$default-size: 16px;
+
+$bold: 700;
+$regular: 400;
+$light: 300;
+
 $primary-font: 'Open Sans', sans-serif;
 $secondary-font: 'Pacifico', cursive;
 
@@ -11,12 +18,12 @@ $secondary-font: 'Pacifico', cursive;
 * Layout standards
 */
 
-$default-padding: 1em;
-$default-space: 15px;
+$default-padding: 4em;
+$default-space: 20px;
 
 /*
 * Colors
 */
 
-$primary-color: rgba(52, 52, 52, 1);
+$primary-color: #212121;
 $secondary-color: #DBDBD4;

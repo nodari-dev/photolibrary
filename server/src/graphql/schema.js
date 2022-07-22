@@ -13,8 +13,6 @@ const typeDefs = gql`
     
     interface DefaultPhoto{
         id: ID!
-        #color for design
-        color: String!
         #get specific sizes of photo
         urls: RegularPhotoUrl!
         user: Author!
@@ -29,20 +27,20 @@ const typeDefs = gql`
     
     type PhotoCard implements DefaultPhoto{
         id: ID!
-        color: String!
         urls: RegularPhotoUrl!
         user: Author!
         created_at: String!
+        #color
+        color: String!
     }
     
     type PhotoDetails implements DefaultPhoto{
         id: ID!
-        color: String!
         urls: RegularPhotoUrl!
         user: Author!
         created_at: String!
         #count of likes
-        likes: Int
+        likes: Int!
         #get link to original page
         links: LinkToHTML!
         #description
@@ -64,7 +62,6 @@ const typeDefs = gql`
         first_name: String
         last_name: String
         #link to unsplash profile
-        links: LinkToHTML!
     }
     
     input SearchParams{

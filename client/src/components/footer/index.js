@@ -2,6 +2,10 @@
 export default function Footer(){
 
     return(
-        <footer className={"footer"}>Footer is working</footer>
+        <div className={"container default-layout"}>
+            <footer className={"footer"}>
+                <a className={"primary-link"} href="https://github.com/nodari-dev/photolibrary" target={"_blank"}>Github repo</a>
+            </footer>
+        </div>
     )
 }

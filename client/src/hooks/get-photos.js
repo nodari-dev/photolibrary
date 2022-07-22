@@ -4,8 +4,8 @@ export const GET_PHOTOS = gql`
     query HomePhotos {
         homePhotos {
             id
-            color
             created_at
+            color
             urls {
                 regular
             }
@@ -13,9 +13,6 @@ export const GET_PHOTOS = gql`
                 id
                 first_name
                 last_name
-                links {
-                    html
-                }
             }
         }
     }

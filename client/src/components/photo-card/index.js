@@ -1,31 +1,22 @@
 import "./style.scss";
-import {Link, NavLink, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {showAuthor} from "../../features";
+import Image from "../image";
 
 
 export default function PhotoCard(props, index) {
     const data = props.data;
 
-    const showDate = () => {
-        const date = new Date(data.created_at);
-        return date.getFullYear();
-    }
-
-    const showAuthor = () => {
-        let lastName = data.user.last_name || " ";
-        return data.user.first_name + " "  + lastName;
-    }
-
     return(
         <div className={"photo-card"} key={index}>
-            <Link to={`photos/${data.id}`}>
-                <div className="photo-card-content">
-                    <p className={"photo-author"}>{showAuthor()}</p>
-                    <div className="image-container">
-                        <img src={data.urls.regular} alt={showAuthor()}/>
-                    </div>
-                    <p className={"photo-data"}>{showDate()}</p>
-                </div>
-            </Link>
+            <div className="photo-card-content">
+                <Image src={data.urls.regular} small={true}/>
+                <p className={"photo-card-content-author"}>
+                    {showAuthor(data.user.first_name, data.user.last_name)}
+                </p>
+                <p className={"photo-card-content-notify"}>Click to open</p>
+            </div>
+            <Link className={"photo-card-link"} to={`photos/${data.id}`}/>
         </div>
     )
 }

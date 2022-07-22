@@ -1,0 +1,22 @@
+@import "../../theme/variables";
+
+.single-photo{
+  width: 100%;
+  margin: $default-space 0;
+
+  &-title {
+    margin: $default-space 0;
+  }
+
+  &-description{
+    margin: $default-space 0;
+
+    & p{
+      margin: 5px 0;
+    }
+    & a{
+      text-decoration: underline;
+    }
+  }
+
+}

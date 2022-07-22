@@ -4,14 +4,46 @@
 
 body{
   font-family: $primary-font;
-  background-color: $secondary-color;
-  color: $primary-color;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-size: $default-size;
+}
+
+@for $i from 1 through length($font-sizes) {
+  $size: nth($font-sizes, $i);
+  h#{$i} {
+    font-size: $size;
+    margin: 5px 0;
+  }
 }
 
 .primary-link{
-  color: $primary-color;
-    &.active{
-      text-decoration: underline;
+  color: $secondary-color;
+  opacity: .8;
+  transition: 300ms all ease-in-out ;
+
+  &:hover{
+    opacity: 1;
+  }
+
+  &::after{
+    content: "";
+    display: block;
+    margin-top:1px;
+    width: 0;
+    height: 1px;
+    padding-top:1px;
+    background-color: $secondary-color;
+    transition: 300ms all ease-in-out;
+  }
+
+
+  &.active{
+    opacity: 1;
+
+    &::after{
+      width: 100%
     }
+  }
 
 }

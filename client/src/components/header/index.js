@@ -1,18 +1,16 @@
-import "./index.scss";
-import {Route, Link, NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 export default function Header(){
 
     return(
-        <header className={"header"}>
-            <nav className="navigation">
-                <div className={"navigation-main"}>
+        <div className={"container default-layout"}>
+            <header className={"header"}>
+                <nav className="navigation">
                     <NavLink className={"primary-link"} activeClassName={"active"} to={"/"}>Index</NavLink>
+                    <Link to={"/"}><h6 className={"logo"}>PhotosLibrary</h6></Link>
                     <NavLink className={"primary-link"} to={"/search/"}>Search</NavLink>
-                </div>
-                <Link to={"/"}><h2 className={"logo"}>PhotosLibrary</h2></Link>
-                <a className={"primary-link"} href="https://github.com/nodari-dev/photolibrary" target={"_blank"}>GitHub</a>
-            </nav>
-        </header>
+                </nav>
+            </header>
+        </div>
     )
 }
