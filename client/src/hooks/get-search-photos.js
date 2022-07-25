@@ -7,8 +7,6 @@ export const GET_SEARCH_PHOTOS = gql`
             total_pages
             results {
                 id
-                created_at
-                color
                 urls {
                     regular
                 }
@@ -17,6 +15,7 @@ export const GET_SEARCH_PHOTOS = gql`
                     first_name
                     last_name
                 }
+                created_at
             }
         }
     }`;

@@ -3,14 +3,14 @@ import {GET_SEARCH_PHOTOS} from "../../hooks/get-search-photos";
 import useSearch from "../../hooks/use-search";
 
 export default function Search() {
-    const {loading, error, data, refetch} = useQuery(GET_SEARCH_PHOTOS);
+    const [getSearch, {data}] = useLazyQuery(GET_SEARCH_PHOTOS);
     const { operations, params } = useSearch();
 
-    if (loading) return <h2>Loading</h2>;
+    // if (loading) return <h2>Loading</h2>;
     return(
         <div>
             <input type="text" onChange={(e) =>{
-                operations.updateParams("keywords", operations.separateValues(e.target.value))
+                operations.updateParams("keywords", operations.getTagsFromInput(e.target.value))
             }}/>
             <input type="number" min={1} onChange={(e) => {
                 operations.updateParams("page", parseInt(e.target.value))
@@ -18,12 +18,15 @@ export default function Search() {
 
 
             <button onClick={() =>{
-                refetch({
-                    searchParams:{
-                        keywords: params.keywords,
-                        page: params.page,
+                console.log("SEARCH")
+                getSearch({
+                    variables:{
+                        searchParams:{
+                            keywords: "nature",
+                            page: 1,
+                        }
                     }
-                })
+                }).then(r => console.log(r))
             }}>
                 Search
             </button>
@@ -39,3 +42,4 @@ export default function Search() {
         </div>
     )
 }
+

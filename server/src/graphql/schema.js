@@ -14,7 +14,6 @@ const typeDefs = gql`
     interface DefaultPhoto{
         id: ID!
         #get specific sizes of photo
-        urls: RegularPhotoUrl!
         user: Author!
         created_at: String!
     }
@@ -30,25 +29,31 @@ const typeDefs = gql`
         urls: RegularPhotoUrl!
         user: Author!
         created_at: String!
-        #color
-        color: String!
     }
     
     type PhotoDetails implements DefaultPhoto{
         id: ID!
-        urls: RegularPhotoUrl!
+        urls: FullPhotoUrl!
         user: Author!
         created_at: String!
         #count of likes
-        likes: Int!
         #get link to original page
         links: LinkToHTML!
         #description
         description: String
+        tags: [SingleTag]
     }
     
     type RegularPhotoUrl{
-        regular: String
+        regular: String!
+    }
+
+    type FullPhotoUrl{
+        full: String!
+    }
+    
+    type SingleTag{
+        title: String!
     }
     
     type SearchPhotos{

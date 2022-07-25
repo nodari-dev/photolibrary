@@ -7,6 +7,7 @@ body{
   background-color: $primary-color;
   color: $secondary-color;
   font-size: $default-size;
+  line-height: 1.5em;
 }
 
 @for $i from 1 through length($font-sizes) {
@@ -14,8 +15,11 @@ body{
   h#{$i} {
     font-size: $size;
     margin: 5px 0;
+    line-height: 1em;
   }
 }
+
+
 
 .primary-link{
   color: $secondary-color;
@@ -45,5 +49,14 @@ body{
       width: 100%
     }
   }
+}
 
+.primary-button{
+  padding: 10px;
+  background-color: $secondary-color;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: $bold;
+  color: $primary-color;
+  margin: 15px 0;
 }

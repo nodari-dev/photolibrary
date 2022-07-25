@@ -4,8 +4,7 @@ import {Fragment} from "react";
 import {GET_PHOTOS} from "../../hooks/get-photos";
 import PhotoCard from "../../components/photo-card";
 import Slider from "react-slick";
-// import {data} from "../../mocked-data";
-import GalleryLayout from "../../containers/gallery-layout";
+import {GalleryLayout} from "../../layouts";
 
 
 export default function Home(){
@@ -30,11 +29,13 @@ export default function Home(){
     if (loading) return <h2>Loading</h2>
     return(
         <GalleryLayout>
-            <Slider {...settings}>
-            {data?.homePhotos?.map((photo, index) => (
-                <PhotoCard data={photo} key={index}/>
-            ))}
-            </Slider>
+            <div className={"slider-flex"}>
+                <Slider {...settings}>
+                    {data?.homePhotos?.map((photo, index) => (
+                        <PhotoCard data={photo} interactive={true} key={index}/>
+                    ))}
+                </Slider>
+            </div>
         </GalleryLayout>
 
     )

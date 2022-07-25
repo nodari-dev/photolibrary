@@ -1,22 +1,71 @@
 @import "../../theme/variables";
 
 .single-photo{
-  width: 100%;
-  margin: $default-space 0;
+  width: 50%;
+  min-height: calc(100vh - 100px);
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &-title {
     margin: $default-space 0;
   }
 
+  &-date{
+    opacity: .8;
+  }
+
   &-description{
-    margin: $default-space 0;
+    margin: 40px 0;
 
     & p{
       margin: 5px 0;
     }
-    & a{
-      text-decoration: underline;
+  }
+
+  & .image-container{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    z-index: -2;
+
+    & img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
+  &-blur{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    z-index: -1;
+    background: rgba(33, 33, 33, 0.5);
+    box-shadow: inset 0px 4px 250px 237px #212121;
+  }
 }
+
+.related-photos{
+  width: 100%;
+  background-color: $primary-color;
+  padding: $default-padding;
+  text-align: center;
+
+  &-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+  }
+}
+

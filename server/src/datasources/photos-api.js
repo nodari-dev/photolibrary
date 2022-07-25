@@ -10,8 +10,8 @@ class PhotosApi extends RESTDataSource{
     getHomePhotos(){
         return this.get(`photos/random?count=30&client_id=${config.API_KEY}`);
     }
-    getSearchPhoto(searchParams){
-        return this.get(`search/photos/?query=${searchParams.keywords}&page=${searchParams.page}&client_id=${config.API_KEY}`);
+    getSearchPhoto(variables){
+        return this.get(`search/photos/?query=${variables.keywords}&page=${variables.page}&client_id=${config.API_KEY}`);
 }
     getPhotoDetails(photoId){
         return this.get(`photos/${photoId}/?client_id=${config.API_KEY}`);
@@ -19,3 +19,6 @@ class PhotosApi extends RESTDataSource{
 }
 
 module.exports = PhotosApi;
+
+
+

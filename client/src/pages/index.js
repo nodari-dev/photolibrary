@@ -17,8 +17,6 @@ export default function Index() {
                 <Route path={"/photos/:photoId"} element={<Photo/>}/>
                 <Route path={"/search"} element={<Search/>}/>
             </Routes>
-
-            <Footer/>
         </Fragment>
     )
 }

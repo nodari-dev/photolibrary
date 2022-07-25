@@ -5,7 +5,7 @@ export const GET_PHOTO_DETAILS = gql`
         photo(id: $photoId) {
             id
             urls {
-                regular
+                full
             }
             user {
                 id
@@ -13,11 +13,13 @@ export const GET_PHOTO_DETAILS = gql`
                 last_name
             }
             created_at
-            likes
             links {
                 html
             }
             description
+            tags {
+                title
+            }
         }
     }
 `;
