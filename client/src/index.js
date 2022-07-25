@@ -4,7 +4,8 @@ import './index.css';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 
 import {BrowserRouter} from "react-router-dom";
-import Index from "./pages";
+import App from "./App";
+import {MainWrapper} from "./containers";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,9 +19,9 @@ const client = new ApolloClient({
 root.render(
     <ApolloProvider client={client}>
         <BrowserRouter>
-            <div className={"main"}>
-                <Index/>
-            </div>
+            <MainWrapper>
+                <App/>
+            </MainWrapper>
         </BrowserRouter>
 
     </ApolloProvider>

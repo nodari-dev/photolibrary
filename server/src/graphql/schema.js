@@ -3,7 +3,7 @@ const {gql} = require('apollo-server');
 const typeDefs = gql`
 
     type Query{
-        #first 20 photos
+        #first 30 photos
         homePhotos: [PhotoCard!]!
         #seach for photos by keywords
         searchPhotos(searchParams: SearchParams!): SearchPhotos!

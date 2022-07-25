@@ -1,13 +1,13 @@
-import "../theme/_index.scss";
+import "./theme/index.scss";
 
 import {Fragment} from "react";
-import {Footer, Header} from "../components";
+import {Footer, Header} from "./components";
 import {Route, Routes} from "react-router-dom";
-import Home from "./home";
-import Photo from "./photo";
-import Search from "./search";
+import Home from "./pages/home";
+import Photo from "./pages/photo";
+import Search from "./pages/search";
 
-export default function Index() {
+export default function App() {
 
     return (
         <Fragment>

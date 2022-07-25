@@ -4,10 +4,21 @@ import {Fragment} from "react";
 import {GET_PHOTOS} from "../../hooks/get-photos";
 import PhotoCard from "../../components/photo-card";
 import Slider from "react-slick";
-import {GalleryLayout} from "../../layouts";
+import {GalleryContainer} from "../../containers";
+import {Loader} from "../../components";
+import {makeStyles} from "@mui/styles";
+import {theme} from "../../theme/theme";
 
+
+const useStyles = makeStyles({
+     homeSlider:{
+         width: "100%",
+         marginTop: theme.header_height,
+     }
+})
 
 export default function Home(){
+    const classes = useStyles();
 
     const settings = {
         dots: false,
@@ -26,17 +37,17 @@ export default function Home(){
 
     const {loading, error, data} = useQuery(GET_PHOTOS);
 
-    if (loading) return <h2>Loading</h2>
+    if (loading) return <Loader/>
     return(
-        <GalleryLayout>
-            <div className={"slider-flex"}>
+        <GalleryContainer>
+            <div className={classes.homeSlider}>
                 <Slider {...settings}>
                     {data?.homePhotos?.map((photo, index) => (
-                        <PhotoCard data={photo} interactive={true} key={index}/>
+                        <PhotoCard data={photo} interactive={true} fixedSize={true} key={index}/>
                     ))}
                 </Slider>
             </div>
-        </GalleryLayout>
+        </GalleryContainer>
 
     )
 }
