@@ -7,7 +7,6 @@ const useStyles = makeStyles({
     photoCard:{
         position: "relative",
         willChange: "auto",
-        flex: "1 1 160px",
         margin: 10,
         transition: theme.transitions.default,
 
@@ -17,7 +16,6 @@ const useStyles = makeStyles({
         },
 
         '&.adaptive-size':{
-            width: "100%",
             height: 500,
         },
 

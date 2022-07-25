@@ -20,18 +20,18 @@ const useStyles = makeStyles({
         alignItems: "center"
     },
 
+    singlePhotoContainer:{
+        width: "100%",
+        minHeight: "100vh",
+    },
+
     defaultContainer:{
         width: "100%",
 
-        marginTop: theme.header_height,
-        padding:`0 ${theme.default_padding}`,
-        minHeight: `calc(100vh - ${theme.header_height}`,
+        marginTop: theme.navHeight,
+        padding:`0 ${theme.defaultPadding}`,
+        minHeight: `calc(100vh - ${theme.navHeight}`,
     },
-
-    photoContainer: {
-        width: "100%",
-        minHeight: "100vh",
-    }
 });
 
 export function MainWrapper (props) {
@@ -58,7 +58,7 @@ export function PhotoContainer(props){
     const classes = useStyles();
 
     return(
-        <div className={classes.photoContainer}>
+        <div className={classes.singlePhotoContainer}>
             {props.children}
         </div>
     )

@@ -11,13 +11,13 @@ export default function Header(){
             top:0,
             left:0,
             position: "absolute",
-            padding: `0 ${theme.default_padding}`,
+            padding: `0 ${theme.defaultPadding}`,
             zIndex: 2,
         },
 
         navigation:{
             width: "100%",
-            height: theme.header_height,
+            height: theme.navHeight,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between"
@@ -36,7 +36,7 @@ export default function Header(){
             <header className={classes.header}>
                 <nav className={classes.navigation}>
                     <NavLink className={elements.primaryLink} activeClassName={"active"} to={"/"}>Index</NavLink>
-                    <Link to={"/"}><h4 className={classes.navLogo}>PhotosLibrary</h4></Link>
+                    <Link to={"/"}><h6 className={classes.navLogo}>PhotosLibrary</h6></Link>
                     <NavLink className={elements.primaryLink} to={"/search/"}>Search</NavLink>
                 </nav>
             </header>

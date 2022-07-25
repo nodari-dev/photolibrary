@@ -34,9 +34,9 @@ export const theme = {
         default: '300ms all ease-in-out'
     },
 
-    header_height: 80,
-    default_padding: "4rem",
-    default_space: 20,
+    navHeight: "80px",
+    defaultPadding: "4rem",
+    defaultSpace: "20px",
 
 
 }
