@@ -1,10 +1,7 @@
 import "./index.css";
 import {Header} from "./components";
 import {Route, Routes} from "react-router-dom";
-import Home from "./pages/home";
-import Photo from "./pages/photo";
-import Search from "./pages/search";
-import {Fragment} from "react";
+import {Home, Photo, Search} from "./pages";
 import GlobalStyles from "./theme/global-styles";
 import {ThemeProvider} from "@mui/styles";
 import {theme} from "./theme/theme";
