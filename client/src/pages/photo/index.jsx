@@ -97,30 +97,34 @@ export default function Photo() {
     const elements = useGlobalThemeElements();
     let {photoId} = useParams();
 
-    const {adapting} = useSearch();
+    const {filters} = useSearch();
     const [getPhoto, {data: dataPhoto}] = useLazyQuery(GET_PHOTO_DETAILS);
     const [getSearch, {data: dataSearch}] = useLazyQuery(GET_SEARCH_PHOTOS);
 
+    useEffect(() => {
+        getPhotoDetails(photoId)
+    }, [])
 
-    const getRelatedPhotos = (data) => {
-        if (data.tags.length === 0) return;
+    const getPhotoDetails = (id) =>{
+        getPhoto({
+            variables: {
+                photoId: id
+            }
+        }).then(res => getRelatedPhotos(res.data.photo.tags));
+    }
+
+    const getRelatedPhotos = (tags) => {
+        if (tags.length === 0) return;
 
         getSearch({
             variables: {
                 searchParams: {
-                    keywords: adapting.adaptTagsArray(data.tags),
+                    keywords: tags.reduce(filters.filterTags, ""),
                     page: 1,
                 }
             }
         });
     }
-    useEffect(() => {
-        getPhoto({
-            variables: {
-                photoId
-            }
-        }).then(res => getRelatedPhotos(res.data.photo));
-    }, [])
 
     if (dataPhoto) {
         return (
@@ -143,17 +147,13 @@ export default function Photo() {
                 </div>
 
                 {
-                    dataPhoto?.photo.tags.length > 0 &&
+                    dataSearch && dataSearch?.searchPhotos.results.length !== 0 &&
                     <div className={classes.relatedPhotos}>
                         <h2>You may also like</h2>
                         <div className={classes.relatedList}>
                             {dataSearch?.searchPhotos?.results.map((photo, index) => (
                                 <div className={classes.relatedItem} key={index} onClick={() =>{
-                                     getPhoto({
-                                            variables: {
-                                                photoId: photo.id
-                                            }
-                                        }).then(res => getRelatedPhotos(res.data.photo))
+                                    getPhotoDetails(photo.id)
                                 }}>
                                     <PhotoCard data={photo} fixedSize={false}/>
                                 </div>

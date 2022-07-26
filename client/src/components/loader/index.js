@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: "center",
         transition: theme.transitions.default,
+        backgroundColor: theme.colors.primary.main,
 
         '& > h1':{
             fontFamily: theme.font.secondary

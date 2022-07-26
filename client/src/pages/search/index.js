@@ -2,7 +2,7 @@ import {useLazyQuery, useQuery} from "@apollo/client";
 import {GET_SEARCH_PHOTOS} from "../../hooks/get-search-photos";
 import useSearch from "../../hooks/use-search";
 import {DefaultContainer} from "../../containers";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {makeStyles} from "@mui/styles";
 import {PhotoCard} from "../../components";
 
@@ -73,19 +73,49 @@ const useStyles = makeStyles((theme) => ({
 
     pagination:{
         width: "100%",
-        textAlign: "center"
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+
+    paginationAction: {
+        margin: `0 ${theme.margin.default}`,
+        cursor: "pointer",
+        opacity: 0.8,
+        transition: theme.transitions.default,
+        fontWeight: theme.font.weight.bold,
+
+        '&:hover':{
+            opacity: 1,
+        }
     }
 }))
 
 export default function Search() {
     const classes = useStyles();
+    const didMount = useRef(false);
     const [getSearch, {data}] = useLazyQuery(GET_SEARCH_PHOTOS);
-    const {operations, adapting} = useSearch();
+    const {filters} = useSearch();
     const [totalPages, setTotalPages] = useState();
 
     const [currentPage, setCurrentPage] = useState(1);
     const [keywords, setKeywords] = useState("");
 
+
+    useEffect(()=>{
+        if (!didMount.current) {
+            didMount.current = true;
+            return;
+        }
+        getSearch({
+            variables: {
+                searchParams: {
+                    keywords: keywords,
+                    page: currentPage
+                }
+            }
+        })
+    }, [currentPage]);
     // if (loading) return <h2>Loading</h2>;
     return (
         <DefaultContainer>
@@ -93,7 +123,7 @@ export default function Search() {
                 <h2 className={classes.title}>Find something new for yourself <br/> and even more</h2>
                 <div className={classes.form}>
                     <input placeholder={"Search here"} className={classes.searchInput} type="text" onChange={(e) => {
-                        setKeywords(adapting.adaptInputString(e.target.value));
+                        setKeywords(filters.filterInput(e.target.value));
                     }}/>
                     <button className={classes.searchButton} onClick={() => {
                         getSearch({
@@ -109,9 +139,6 @@ export default function Search() {
                     </button>
                 </div>
 
-                <p>Total pages {totalPages}</p>
-                <p>Current page {currentPage}</p>
-
                 <div className={classes.results}>
                     {data?.searchPhotos?.results.map((item, index) => (
                         <div className={classes.resultsItem} key={index}>
@@ -120,27 +147,22 @@ export default function Search() {
                         </div>
                     ))}
                 </div>
-                {/*{data?.searchPhotos && (*/}
-                {/*    <div className={classes.pagination}>*/}
-                {/*        <h4>*/}
-                {/*            {currentPage > 1 && (<p>prev</p>)}*/}
-                {/*            {currentPage} of {totalPages}*/}
-                {/*            <p onClick={() =>{*/}
-                {/*                // setCurrentPage(currentPage + 1);*/}
-                {/*                // console.log(currentPage);*/}
-                {/*                // getSearch({*/}
-                {/*                //     variables: {*/}
-                {/*                //         searchParams: {*/}
-                {/*                //             keywords: keywords,*/}
-                {/*                //             page: currentPage*/}
-                {/*                //         }*/}
-                {/*                //     }*/}
-                {/*                // })*/}
 
-                {/*            }}>next</p>*/}
-                {/*        </h4>*/}
-                {/*    </div>*/}
-                {/*)}*/}
+                {data?.searchPhotos && (
+                    <div className={classes.pagination}>
+                        {currentPage < totalPages &&
+                            <div className={classes.paginationAction}
+                                 onClick={() =>{setCurrentPage(currentPage - 1);}}>Prev</div>
+                        }
+                        <h4>
+                            {currentPage}
+                        </h4>
+                        {currentPage !== totalPages &&
+                            <div className={classes.paginationAction}
+                                 onClick={() =>{setCurrentPage(currentPage + 1);}}>Next</div>
+                        }
+                    </div>
+                )}
 
             </div>
 
