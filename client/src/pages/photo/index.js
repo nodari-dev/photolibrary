@@ -1,4 +1,3 @@
-// import "./style.scss";
 import {useLazyQuery, useQuery} from "@apollo/client";
 import {GET_PHOTO_DETAILS} from "../../hooks/get-photo-details";
 import {Link, useParams} from "react-router-dom";
@@ -6,14 +5,12 @@ import {PhotoContainer} from "../../containers";
 import {showAuthor} from "../../features";
 import {GET_SEARCH_PHOTOS} from "../../hooks/get-search-photos";
 import useSearch from "../../hooks/use-search";
-import {useEffect} from "react";
-import PhotoCard from "../../components/photo-card";
-import {Loader} from "../../components";
+import {useEffect, useState} from "react";
+import {Loader, PhotoCard} from "../../components";
 import {makeStyles} from "@mui/styles";
-import {theme} from "../../theme/theme";
-import {useThemeElements} from "../../theme/theme-elements";
+import {useGlobalThemeElements} from "../../theme/global-theme-elements";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) =>({
     singlePhoto: {
         width: "100%",
         minHeight: "100vh",
@@ -26,16 +23,16 @@ const useStyles = makeStyles({
     content: {
         width: "50%",
         textAlign: "center",
-        marginTop: theme.navHeight,
+        marginTop: theme.navigation.height,
         zIndex: 2,
     },
 
     title: {
-        margin: `${theme.defaultSpace} 0`,
+        margin: `${theme.margin.default} 0`,
     },
 
     date: {
-        opacity: 0.8,
+        color: theme.colors.secondary.opacity
     },
 
     description: {
@@ -68,15 +65,15 @@ const useStyles = makeStyles({
         left: 0,
         margin: "auto",
         zIndex: 1,
-        background: "rgba(33, 33, 33, 0.5)",
-        boxShadow: `inset 0px 4px 250px 100px ${theme.colors.primary}`,
+        background: theme.colors.primary.opacity,
+        boxShadow: `inset 0px 4px 250px 100px ${theme.colors.primary.main}`,
     },
 
     relatedPhotos: {
         width: "100%",
         position: "relative",
-        backgroundColor: theme.colors.primary,
-        padding: theme.defaultPadding,
+        backgroundColor: theme.colors.primary.main,
+        padding: theme.padding.default,
         textAlign: "center",
         zIndex: 4,
     },
@@ -85,31 +82,24 @@ const useStyles = makeStyles({
         width: "100%",
         display: "flex",
         flexWrap: "wrap",
-        margin: `${theme.defaultSpace} 0`,
+        margin: `${theme.margin.default} 0`,
     },
 
     relatedItem:{
-        flex: `1 1 calc(25% - ${theme.defaultSpace} * 2)`
+        flex: `1 1 calc(25% - ${theme.margin.default} * 2)`
     }
 
 
-})
+}));
 
 export default function Photo() {
     const classes = useStyles();
-    const elements = useThemeElements();
+    const elements = useGlobalThemeElements();
     let {photoId} = useParams();
-    const {adapting} = useSearch();
-    const [getPhoto, {data: dataPhoto, refetch}] = useLazyQuery(GET_PHOTO_DETAILS);
-    const [getSearch, {data: dataSearch}] = useLazyQuery(GET_SEARCH_PHOTOS);
 
-    useEffect(() => {
-        getPhoto({
-            variables: {
-                photoId
-            }
-        }).then(res => getRelatedPhotos(res.data.photo));
-    }, [])
+    const {adapting} = useSearch();
+    const [getPhoto, {data: dataPhoto}] = useLazyQuery(GET_PHOTO_DETAILS);
+    const [getSearch, {data: dataSearch}] = useLazyQuery(GET_SEARCH_PHOTOS);
 
 
     const getRelatedPhotos = (data) => {
@@ -124,6 +114,13 @@ export default function Photo() {
             }
         });
     }
+    useEffect(() => {
+        getPhoto({
+            variables: {
+                photoId
+            }
+        }).then(res => getRelatedPhotos(res.data.photo));
+    }, [])
 
     if (dataPhoto) {
         return (
@@ -151,7 +148,13 @@ export default function Photo() {
                         <h2>You may also like</h2>
                         <div className={classes.relatedList}>
                             {dataSearch?.searchPhotos?.results.map((photo, index) => (
-                                <div className={classes.relatedItem} key={index}>
+                                <div className={classes.relatedItem} key={index} onClick={() =>{
+                                     getPhoto({
+                                            variables: {
+                                                photoId: photo.id
+                                            }
+                                        }).then(res => getRelatedPhotos(res.data.photo))
+                                }}>
                                     <PhotoCard data={photo} fixedSize={false}/>
                                 </div>
                             ))}

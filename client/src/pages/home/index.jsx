@@ -1,21 +1,46 @@
 
 import {useQuery} from "@apollo/client";
-import {Fragment} from "react";
 import {GET_PHOTOS} from "../../hooks/get-photos";
 import PhotoCard from "../../components/photo-card";
 import Slider from "react-slick";
 import {GalleryContainer} from "../../containers";
 import {Loader} from "../../components";
 import {makeStyles} from "@mui/styles";
-import {theme} from "../../theme/theme";
 
 
-const useStyles = makeStyles({
-     homeSlider:{
+const useStyles = makeStyles((theme) =>({
+    sliderWrap:{
          width: "100%",
-         marginTop: theme.header_height,
-     }
-})
+         marginTop: theme.navigation.height,
+     },
+
+    slider:{
+
+        '& .slick-track':{
+            display: "flex",
+            alignItems: "center",
+
+            '& .slick-slide':{
+                transition: theme.transitions.default,
+                transform: "scale(0.85)",
+                opacity: 0.6,
+                cursor: "pointer",
+
+                '& > *': {
+                    pointerEvents: "none"
+                },
+                '&.slick-active':{
+                    opacity: 1,
+                    transform: "scale(1)",
+
+                    '& > *': {
+                        pointerEvents: "all"
+                    },
+                }
+            }
+        }
+    }
+}));
 
 export default function Home(){
     const classes = useStyles();
@@ -40,8 +65,8 @@ export default function Home(){
     if (loading) return <Loader/>
     return(
         <GalleryContainer>
-            <div className={classes.homeSlider}>
-                <Slider {...settings}>
+            <div className={classes.sliderWrap}>
+                <Slider {...settings} className={classes.slider}>
                     {data?.homePhotos?.map((photo, index) => (
                         <PhotoCard data={photo} interactive={true} fixedSize={true} key={index}/>
                     ))}

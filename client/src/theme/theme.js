@@ -4,7 +4,7 @@ export const theme = {
         primary: "'Open Sans', sans-serif",
         secondary: "'Pacifico', cursive",
 
-        size:{
+        sizes:{
             desktop:{
                 h1: 60,
                 h2: 48,
@@ -15,6 +15,11 @@ export const theme = {
                 paragraph: 16
             }
         },
+        lineHeight: {
+            desktop: {
+                auto: 'auto'
+            }
+        },
 
         weight:{
             bold: 700,
@@ -23,20 +28,36 @@ export const theme = {
         },
     },
 
-    colors:{
-        primary: "#212121",
-        secondary: "#DBDBD4",
+    shape:{
+        radius: 15
     },
 
-
+    colors:{
+        primary: {
+            main: "rgba(33,33,33, 1)",
+            opacity: "rgba(33,33,33,0.7)",
+        },
+        secondary: {
+            main: "rgba(219,219,212, 1)",
+            opacity: "rgba(219,219,212, 0.7)",
+        }
+    },
 
     transitions:{
         default: '300ms all ease-in-out'
     },
 
-    navHeight: "80px",
-    defaultPadding: "4rem",
-    defaultSpace: "20px",
+    navigation:{
+        height: "80px",
+    },
+
+    padding: {
+        default: "4rem",
+    },
+    margin:{
+        default: "20px",
+        medium: "40px",
+    }
 
 
 }

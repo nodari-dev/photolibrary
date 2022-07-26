@@ -7,11 +7,11 @@ const useStyles = makeStyles(() =>
             body: {
                 height: '100%',
                 width: '100%',
-                backgroundColor: theme.colors.primary,
-                color: theme.colors.secondary,
+                backgroundColor: theme.colors.primary.main,
+                color: theme.colors.secondary.main,
                 fontFamily: theme.font.primary,
-                lineHeight: "1.5em",
-                fontSize: theme.font.size.desktop.paragraph
+                lineHeight: theme.font.lineHeight.desktop.auto,
+                fontSize: theme.font.sizes.desktop.paragraph
             },
 
             "h1,h2,h3,h4,h5,h6":{
@@ -20,22 +20,22 @@ const useStyles = makeStyles(() =>
             },
 
             h1:{
-                fontSize: theme.font.size.desktop.h1
+                fontSize: theme.font.sizes.desktop.h1
             },
             h2:{
-                fontSize: theme.font.size.desktop.h2
+                fontSize: theme.font.sizes.desktop.h2
             },
             h3:{
-                fontSize: theme.font.size.desktop.h3
+                fontSize: theme.font.sizes.desktop.h3
             },
             h4:{
-                fontSize: theme.font.size.desktop.h4
+                fontSize: theme.font.sizes.desktop.h4
             },
             h5:{
-                fontSize: theme.font.size.desktop.h5
+                fontSize: theme.font.sizes.desktop.h5
             },
             h6:{
-                fontSize: theme.font.size.desktop.h6
+                fontSize: theme.font.sizes.desktop.h6
             },
         }
     })

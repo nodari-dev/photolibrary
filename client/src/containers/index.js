@@ -1,4 +1,4 @@
-import {makeStyles} from "@mui/styles";
+import {makeStyles, useTheme} from "@mui/styles";
 import {theme} from "../theme/theme";
 
 const useStyles = makeStyles({
@@ -9,7 +9,6 @@ const useStyles = makeStyles({
         alignItems: "center",
         justifyContent: "space-between",
         flexDirection: "column",
-        backgroundColor: theme.colors.primary
     },
 
     galleryContainer:{
@@ -28,9 +27,11 @@ const useStyles = makeStyles({
     defaultContainer:{
         width: "100%",
 
-        marginTop: theme.navHeight,
-        padding:`0 ${theme.defaultPadding}`,
-        minHeight: `calc(100vh - ${theme.navHeight}`,
+        padding:`${theme.padding.default} ${theme.navigation.height}`,
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
     },
 });
 

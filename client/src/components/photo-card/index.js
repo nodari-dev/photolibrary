@@ -1,8 +1,7 @@
 import {Link} from "react-router-dom";
-import {makeStyles} from "@mui/styles";
-import {theme} from "../../theme/theme";
+import {makeStyles, useTheme} from "@mui/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) =>({
 
     photoCard:{
         position: "relative",
@@ -19,19 +18,15 @@ const useStyles = makeStyles({
             height: 500,
         },
 
-        '&.interactive': {
-
-            '& $notify':{
-                opacity: 1
-            }
-
-        },
 
         '&.default': {
             '&:hover':{
                 transform: "scale(.95)",
             }
         },
+
+
+
     },
 
     content:{
@@ -47,8 +42,10 @@ const useStyles = makeStyles({
             position: "absolute",
             top:0,
             left:0,
-            objectFit: "cover"
-        }
+            objectFit: "cover",
+        },
+
+
     },
 
     link:{
@@ -61,21 +58,18 @@ const useStyles = makeStyles({
         zIndex: 10
     },
 
-    notify:{
-        transition: theme.transitions.default,
-        opacity: 0,
-    },
 
-})
+}))
 
-export default function PhotoCard({data, interactive, fixedSize, index}) {
-    const classes = useStyles();
+export default function PhotoCard({data, interactive, fixedSize, additionalInfo, index}) {
+    const theme = useTheme();
+    const classes = useStyles(theme);
     return(
         <div className={`${classes.photoCard} ${interactive ? "interactive" : "default"} ${fixedSize ? "fixed-size" : "adaptive-size"}`} key={index}>
             <div className={`${classes.content}`}>
                 <img src={data.urls.regular} alt="Photo"/>
             </div>
-
+            {additionalInfo && <p>{data.date}</p> }
             <Link to={`/photos/${data.id}`} className={classes.link}/>
         </div>
     )

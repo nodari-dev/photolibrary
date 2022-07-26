@@ -1,7 +1,6 @@
-import {makeStyles} from "@mui/styles";
-import {theme} from "../../theme/theme";
+import {makeStyles, useTheme} from "@mui/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     loader: {
         width: '100%',
         height: '100%',
@@ -18,9 +17,10 @@ const useStyles = makeStyles({
             fontFamily: theme.font.secondary
         }
     }
-})
+}))
 export default function Loader() {
-    const classes = useStyles();
+    const theme = useTheme();
+    const classes = useStyles(theme);
     return (
         <div className={classes.loader}><h1>PhotosLibrary</h1></div>
     )

@@ -1,10 +1,9 @@
-import {theme} from "./theme";
 import {makeStyles} from "@mui/styles";
 
-export const useThemeElements = makeStyles({
+export const useGlobalThemeElements = makeStyles((theme) =>({
 
     primaryLink:{
-        color: theme.colors.secondary,
+        color: theme.colors.secondary.main,
         opacity: 0.8,
         transition: theme.transitions.default,
 
@@ -19,7 +18,7 @@ export const useThemeElements = makeStyles({
             width: 0,
             height: 1,
             paddingTop:1,
-            backgroundColor: theme.colors.secondary,
+            backgroundColor: theme.colors.secondary.main,
             transition: theme.transitions.default,
         },
 
@@ -34,10 +33,10 @@ export const useThemeElements = makeStyles({
 
     primaryButton:{
         padding: 10,
-        backgroundColor: theme.colors.secondary,
+        backgroundColor: theme.colors.secondary.main,
         textTransform: "uppercase",
         fontWeight: theme.font.weight.bold,
-        color: theme.colors.primary,
+        color: theme.colors.primary.main,
         margin: "15px 0",
     },
-});
+}));
