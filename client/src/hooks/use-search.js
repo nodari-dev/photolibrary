@@ -8,7 +8,6 @@ export default function useSearch () {
 
     const filterTags = (str, tag) =>{ return str + tag.title; }
 
-
     return{
         filters: {filterInput, filterTags}
     }
