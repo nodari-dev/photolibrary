@@ -47,23 +47,6 @@ export const useStyles = makeStyles((theme) => ({
         }
     },
 
-    results: {
-        width: "100%",
-        display: "flex",
-        flexWrap: "wrap",
-        margin: `${theme.margin.medium} 0`,
-
-
-    },
-
-    resultsItem: {
-        flex: `1 1 calc(25% - ${theme.margin.default} * 2)`,
-        transition: theme.transitions.default,
-
-        '&:hover':{
-            transform: 'scale(0.95)',
-        }
-    },
 
     pagination:{
         width: "100%",

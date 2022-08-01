@@ -33,4 +33,17 @@ export const useStyles = makeStyles({
         justifyContent: "center",
         alignItems: "center"
     },
+
+    photosListContainer:{
+        width: "100%",
+        display: "flex",
+        flexWrap: "wrap",
+        margin: `${theme.margin.medium} 0`,
+
+        "& > div":{
+            flex: `1 1 calc(25% - ${theme.margin.default} * 2)`,
+        }
+    },
+
+
 });

@@ -1,4 +1,5 @@
 import {useStyles} from "./styles";
+import {PhotoCard} from "../components";
 
 export function MainWrapper (props) {
     const classes = useStyles();
@@ -38,4 +39,14 @@ export function GalleryContainer (props){
             {props.children}
         </div>
     )
+}
+
+export function PhotosListContainer (props){
+    const classes = useStyles();
+
+        return(
+            <div className={classes.photosListContainer}>
+                {props.children}
+            </div>
+        )
 }

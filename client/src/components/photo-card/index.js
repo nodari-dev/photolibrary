@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-import {useTheme} from "@mui/styles";
 import {useStyles} from "./styles";
 
 export default function PhotoCard({data, interactive, fixedSize, additionalInfo, index}) {

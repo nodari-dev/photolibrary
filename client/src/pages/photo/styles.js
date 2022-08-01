@@ -68,16 +68,4 @@ export const useStyles = makeStyles((theme) =>({
         zIndex: 4,
     },
 
-    relatedList:{
-        width: "100%",
-        display: "flex",
-        flexWrap: "wrap",
-        margin: `${theme.margin.default} 0`,
-    },
-
-    relatedItem:{
-        flex: `1 1 calc(25% - ${theme.margin.default} * 2)`
-    }
-
-
 }));

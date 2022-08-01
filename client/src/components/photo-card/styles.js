@@ -8,6 +8,10 @@ export const useStyles = makeStyles((theme) =>({
         margin: 10,
         transition: theme.transitions.default,
 
+        '&:hover':{
+            transform: "scale(.95)",
+        },
+
         '&.fixed-size':{
             width: 500,
             height: 500,
@@ -16,14 +20,6 @@ export const useStyles = makeStyles((theme) =>({
         '&.adaptive-size':{
             height: 500,
         },
-
-
-        '&.default': {
-            '&:hover':{
-                transform: "scale(.95)",
-            }
-        },
-
 
 
     },
