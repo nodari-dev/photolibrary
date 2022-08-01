@@ -4,10 +4,6 @@ import {GET_PHOTO_DETAILS} from "./get-photo-details";
 export default function usePhoto() {
     const [_getPhoto, {data}] = useLazyQuery(GET_PHOTO_DETAILS);
 
-    const clearData = () =>{
-        console.log(data);
-    }
-
     const getPhoto = (id) =>{
         _getPhoto({
             variables: {
@@ -17,7 +13,7 @@ export default function usePhoto() {
     }
 
     return{
-        photoActions: {getPhoto, clearData  },
+        photoActions: {getPhoto},
         photoData: data
     }
 }
