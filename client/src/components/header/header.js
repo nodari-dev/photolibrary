@@ -7,14 +7,15 @@ export default function Header(){
     const elements = useGlobalThemeElements();
 
     return(
-            <header className={classes.header}>
-                <nav className={classes.navigation}>
-                    <NavLink className={({ isActive }) => elements.primaryLink + (isActive ? " active" : "")}
-                             to={"/"}>Index</NavLink>
-                    <Link to={"/"}><h6 className={classes.navLogo}>PhotosLibrary</h6></Link>
-                    <NavLink className={({ isActive }) => elements.primaryLink + (isActive ? " active" : "")}
-                             to={"/search/"}>Search</NavLink>
-                </nav>
-            </header>
+        <p>123</p>
+            // <header className={classes.header}>
+            //     <nav className={classes.navigation}>
+            //         <NavLink className={({ isActive }) => elements.primaryLink + (isActive ? " active" : "")}
+            //                  to={"/"}>Index</NavLink>
+            //         <Link to={"/"}><h6 className={classes.navLogo}>PhotosLibrary</h6></Link>
+            //         <NavLink className={({ isActive }) => elements.primaryLink + (isActive ? " active" : "")}
+            //                  to={"/search/"}>Search</NavLink>
+            //     </nav>
+            // </header>
     )
 }

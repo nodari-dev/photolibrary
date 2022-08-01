@@ -1,6 +1,7 @@
 import {makeStyles} from "@mui/styles";
+import {theme} from "./theme";
 
-export const useGlobalThemeElements = makeStyles((theme) =>({
+export const useGlobalThemeElements = makeStyles(() =>({
 
     primaryLink:{
         color: theme.colors.secondary.main,

@@ -4,6 +4,8 @@ import App from "./App";
 
 describe("App", () => {
     describe("renders stater content", () => {
-        const { getByTestId } = render(<App/>);
+        // const { getByTestId } = render(<App/>);
+        it("test", () =>{
+        })
     })
 })

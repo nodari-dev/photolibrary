@@ -1,9 +1,13 @@
 import React from "react";
 import {fireEvent, render} from "@testing-library/react";
-import App from "../../../App";
+import Header from "../header";
 
 describe("Header", () => {
     describe("test", () => {
-        const { getByTestId } = render(<App/>);
+        const { getByTestId } = render(<Header/>);
+
+        it("hello world", () =>{
+            console.log("123")
+        })
     })
 })

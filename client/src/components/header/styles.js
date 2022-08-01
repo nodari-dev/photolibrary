@@ -1,5 +1,6 @@
 import {makeStyles} from "@mui/styles";
-export const useStyles = makeStyles((theme) =>({
+import {theme} from "../../theme/theme";
+export const useStyles = makeStyles(() =>({
     header:{
         width: "100%",
         top:0,
@@ -21,5 +22,4 @@ export const useStyles = makeStyles((theme) =>({
         fontFamily: theme.font.secondary,
         color: theme.colors.secondary.main
     }
-
 }))

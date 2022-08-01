@@ -4,7 +4,7 @@ import {GET_PHOTOS} from "../../hooks/get-photos";
 import {GalleryContainer} from "../../containers";
 import {Loader} from "../../components";
 import {useStyles} from "./styles";
-import {HomeSlider} from "./components/slider";
+import {HomeSlider} from "./components/home-slider";
 
 export default function Home(){
     const classes = useStyles();
