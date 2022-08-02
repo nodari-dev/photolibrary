@@ -1,5 +1,4 @@
 import {useStyles} from "./styles";
-import {PhotoCard} from "../components";
 
 export function MainWrapper (props) {
     const classes = useStyles();

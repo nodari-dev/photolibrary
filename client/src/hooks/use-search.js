@@ -1,4 +1,3 @@
-import {useState} from "react";
 import {useLazyQuery} from "@apollo/client";
 import {GET_SEARCH_PHOTOS} from "./get-search-photos";
 

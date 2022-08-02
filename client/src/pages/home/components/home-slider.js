@@ -17,6 +17,7 @@ export const HomeSlider = ({data}) => {
 
     };
     return (
+
         <Slider {...settings} className={classes.slider}>
             {data?.homePhotos?.map((photo, index) => (
                 <PhotoCard data={photo} interactive={true} fixedSize={true} key={index}/>

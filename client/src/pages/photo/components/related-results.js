@@ -2,7 +2,7 @@ import {PhotoCard} from "../../../components";
 import usePhoto from "../../../hooks/use-photo";
 
 export const RelatedResults = ({list}) => {
-    const {photoActions, photoData} = usePhoto();
+    const {photoActions} = usePhoto();
     return (
         <>
             {list.map((item, index) => (
